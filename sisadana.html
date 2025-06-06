@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sisa Dana Karang Taruna</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1e3a8a, #2563eb);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .wallet {
+      background-color: #1e40af;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+      text-align: center;
+      position: relative;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .wallet h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .wallet .amount {
+      font-size: 48px;
+      font-weight: bold;
+      color: #bbf7d0;
+      animation: pulse 2s infinite;
+    }
+
+    .logout-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #dc2626;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wallet">
+    <button class="logout-btn" onclick="logout()">Back</button>
+    <h2>Sisa Dana Karang Taruna</h2>
+    <div class="amount" id="sisaDana">Rp 0</div>
+  </div>
+
+  <script>
+    function hitungSaldo() {
+      const laporan = JSON.parse(localStorage.getItem('laporanKarangTaruna')) || [];
+
+      let total = 0;
+      laporan.forEach(item => {
+        const nominal = Number(item.jumlah);
+        if (item.jenis === 'Pemasukan') total += nominal;
+        else if (item.jenis === 'Pengeluaran') total -= nominal;
+      });
+
+      return total;
+    }
+
+    function tampilkanSaldo() {
+      const saldo = hitungSaldo();
+      const display = document.getElementById('sisaDana');
+      display.textContent = `Rp ${saldo.toLocaleString('id-ID')}`;
+    }
+
+    function logout() {
+      alert("Anda telah kembali ke halaman admin.");
+      window.location.href = "admin.html";
+    }
+
+    tampilkanSaldo();
+  </script>
+</body>
+</html>

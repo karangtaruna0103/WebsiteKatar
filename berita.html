@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Berita Katar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      padding-bottom: 20px;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+    }
+    .news-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .news-item {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+      padding: 20px;
+    }
+    .news-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #1e40af;
+    }
+    .news-date {
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .news-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .news-content {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #374151;
+    }
+    @media (max-width: 600px) {
+      .news-title {
+        font-size: 20px;
+      }
+    }
+  </style>
+<body>
+  <header>
+    <h1>Berita Karang Taruna Kebon Jeruk</h1>
+  </header>
+
+  <div class="news-container" id="newsContainer">
+    <!-- Berita akan dimuat di sini -->
+  </div>
+
+  <script>
+    function ambilDataBerita() {
+      return JSON.parse(localStorage.getItem('newsKarangTaruna')) || [];
+    }
+
+    function tampilkanBerita() {
+      const container = document.getElementById('newsContainer');
+      const berita = ambilDataBerita();
+      if (berita.length === 0) {
+        container.innerHTML = '<p>Tidak ada berita yang tersedia saat ini.</p>';
+        return;
+      }
+      container.innerHTML = '';
+
+      berita.forEach(item => {
+        const newsDiv = document.createElement('div');
+        newsDiv.className = 'news-item';
+
+        newsDiv.innerHTML = `
+          <div class="news-title">${item.judul}</div>
+          <div class="news-date">${item.tanggal}</div>
+          ${item.gambar ? `<img src="${item.gambar}" alt="Gambar Berita" class="news-image">` : ''}
+          <div class="news-content">${item.isi}</div>
+        `;
+
+        container.appendChild(newsDiv);
+      });
+    }
+
+    // Tampilkan berita saat halaman siap
+    document.addEventListener('DOMContentLoaded', tampilkanBerita);
+  </script>
+  <style>
+    .back-button {
+      padding: 10px 18px;
+      background-color: #6b7280;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 20px;
+    }
+    .back-button:hover {
+      background-color: #4b5563;
+    }
+  </style>
+
+  <button class="back-button" onclick="goBack()">← Kembali</button>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

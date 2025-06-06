@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f1f5f9;
+}
+
+header {
+  background-color: #1e3a8a;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.logout-button {
+  background-color: #dc2626;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-button:hover {
+  background-color: #b91c1c;
+}
+
+main {
+  padding: 30px;
+}
+
+.menu-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.menu-card {
+  background-color: #2563eb;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.menu-card:hover {
+  background-color: #1d4ed8;
+}

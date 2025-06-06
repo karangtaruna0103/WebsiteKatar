@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Beranda - Sistem Pengelolaan Kas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+  .popup-notif {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #2563eb;
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 9999;
+    animation: fadeInOut 4s ease forwards;
+  }
+
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+  }
+</style>
+<body>
+  <div id="notif" class="popup-notif">Selamat datang di Website Karang Taruna!</div>
+  <header>
+    <h1>Perancangan Sistem Pengelolaan Data Kas Karang Taruna Kebon Jeruk</h1>
+    <nav>
+      <a href="index.html">Beranda</a>
+      <a href="berita.html">Kegiatan</a>
+      <a href="login.html">LOGIN</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Selamat Datang</h2>
+    <p>Sistem ini membantu Karang Taruna Kebon Jeruk dalam mencatat dan mengelola data kas secara efisien dan transparan.</p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Karang Taruna Kebon Jeruk</p>
+  </footer>
+  <div id="time" style="text-align:center; margin-top:10px; font-weight:hold;"></div>
+  <script src="script.js"></script>
+
+  <script>
+  window.onload = function () {
+    const notif = document.getElementById('notif');
+    notif.style.display = 'block';
+    setTimeout(() => {
+      notif.style.display = 'none';
+    }, 4000); // sembunyikan setelah 4 detik
+  };
+</script>
+</body>
+</html>

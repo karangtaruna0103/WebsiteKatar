@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard Karang Taruna</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <header>
+    <h1>Dashboard Admin</h1>
+    <button id="logoutBtn" class="logout-button">🔒 Logout</button>
+  </header>
+
+  <main>
+    <section class="menu-grid">
+      <a href="pemasukan.html" class="menu-card">➕ Pemasukan</a>
+      <a href="pengeluaran.html" class="menu-card">➖ Pengeluaran</a>
+      <a href="sisadana.html" class="menu-card">💰 Sisa Dana</a>
+      <a href="laporan.html" class="menu-card">📄 Laporan</a>
+      <a href="inputanggota.html" class="menu-card">Add Anggota</a>
+      <a href="addberita.html" class="menu-card">Add Berita</a>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("logoutBtn").addEventListener("click", function () {
+      alert("Anda telah logout.");
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>
