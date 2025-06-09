@@ -1,187 +1,111 @@
+/* RESET DASAR */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f5f5f5;
+  background-color: #f3f4f6;
+  color: #1f2937;
+  line-height: 1.6;
+  padding: 0 16px;
 }
 
+/* HEADER */
 header {
-  background: #004b8d;
+  background-color: #1e40af;
   color: white;
   padding: 20px;
-  left: auto;
-  right: auto;
   text-align: center;
+  border-bottom: 4px solid #1d4ed8;
 }
-header img {
-      width: 60px;
-      height: 60px;
-    }
 
-.popup-notif {
-    display: none;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #2563eb;
-    color: #fff;
-    padding: 14px 24px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    font-weight: bold;
-    font-size: 16px;
-    z-index: 9999;
-    animation: fadeInOut 4s ease forwards;
-  }
+header h1 {
+  font-size: 1.8rem;
+}
 
-  @keyframes fadeInOut {
-    0% { opacity: 0; transform: translateY(-20px); }
-    10% { opacity: 1; transform: translateY(0); }
-    90% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(-20px); }
-  }
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
+header h2 {
+  font-size: 1.1rem;
+  font-weight: normal;
+  margin-top: 5px;
 }
 
 nav {
-  margin-top: 10px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 nav a {
   color: white;
-  margin: 0 10px;
   text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* MAIN */
 main {
+  max-width: 800px;
+  margin: 30px auto;
+  background-color: white;
   padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  text-align: center;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 400px;
-  gap: 10px;
+main h2 {
+  margin-bottom: 10px;
+  color: #1e3a8a;
 }
 
-input, button {
-  padding: 10px;
-  font-size: 16px;
-}
-
+/* FOOTER */
 footer {
-  background: #004b8d;
+  text-align: center;
+  margin: 40px 0 10px;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* NOTIFIKASI */
+.popup-notif {
+  background-color: #10b981;
   color: white;
   text-align: center;
   padding: 10px;
-}
-.login-container {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  text-align: center;
-  width: 300px;
-  margin: 0 auto;
+  display: none;
+  font-weight: bold;
 }
 
-.login-container h2 {
-  margin-bottom: 1rem;
-  color: #1e3a8a;
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  header h2 {
+    font-size: 0.95rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+    margin: 6px 0;
+  }
+
+  main {
+    padding: 15px;
+  }
+
+  .popup-notif {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
 }
-
-.login-container input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
-
-.login-container button {
-  width: 100%;
-  padding: 10px;
-  background: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.login-container button:hover {
-  background: #2563eb;
-}
-.container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-
-.container h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #1e3a8a;
-}
-body {
-      font-family: 'Segoe UI', sans-serif;
-      padding: 30px;
-      background-color: white;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .table-container {
-      overflow-x: auto;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 40px;
-      background: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    th, td {
-      padding: 12px 15px;
-      border: 1px solid #ddd;
-      text-align: left;
-    }
-
-    th {
-      background-color: #007bff;
-      color: white;
-    }
-
-    tfoot td {
-      font-weight: bold;
-      background-color: #f8f9fa;
-    }
-
-    .total {
-      text-align: right;
-      font-size: 1.2em;
-    }
-
-    nav {
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: white;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
