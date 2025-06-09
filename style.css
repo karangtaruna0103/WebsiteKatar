@@ -8,6 +8,8 @@ header {
   background: #004b8d;
   color: white;
   padding: 20px;
+  left: auto;
+  right: auto;
   text-align: center;
 }
 header img {
