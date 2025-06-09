@@ -2,9 +2,66 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login Karang Taruna</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1e3a8a, #2563eb);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #1f2937;
+    }
+
+    .login-container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .login-container h2 {
+      margin-bottom: 20px;
+      color: #1e3a8a;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px 14px;
+      margin: 10px 0;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      background-color: #2563eb;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .login-container button:hover {
+      background-color: #1e40af;
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -27,7 +84,7 @@
       if (user === 'admin' && pass === '1234') {
         localStorage.setItem('isLoggedIn', 'true');
         alert('Login berhasil!');
-        window.location.href = 'admin.html'; // Halaman utama
+        window.location.href = 'admin.html'; // Ganti dengan halaman utama kamu
       } else {
         alert('Username atau password salah');
       }
