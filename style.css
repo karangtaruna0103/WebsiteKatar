@@ -274,3 +274,38 @@ main h2 {
     text-align: center;
   }
 }
+/* Overlay fullscreen */
+.preloader-overlay {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Spinner lambat & smooth */
+.spinner {
+  width: 80px;
+  height: 80px;
+  border: 10px solid #e5e7eb;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: slowspin 4s linear infinite;
+  margin-bottom: 16px;
+}
+
+/* Teks loading */
+.loading-text {
+  font-size: 1rem;
+  color: #1e40af;
+  font-weight: 500;
+}
+
+/* Animasi rotating lambat */
+@keyframes slowspin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

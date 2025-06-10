@@ -103,4 +103,10 @@ function tampilkanJadwalHariIni() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", tampilkanJadwalHariIni);
+document.addEventListener("DOMContentLoaded", tampilkanJadwalHariIni); 
+
+ window.addEventListener("load", () => {
+    const pre = document.getElementById("preloader");
+    pre.style.opacity = '0';
+    setTimeout(() => pre.remove(), 900); // fade-out halus
+  });
