@@ -55,13 +55,30 @@ if (dataPemasukan && dataPengeluaran) {
   });
 }
 const jadwalKegiatan = {
-  "Senin": ["Rapat Koordinasi - 19:00", "Kegiatan Sosial - 20:00"],
-  "Selasa": ["Akan Segera Hadir"],
-  "Rabu": ["Kerja Bakti - 07:00", "Bimbingan Karir - 20:00"],
-  "Kamis": [],
-  "Jumat": ["Diskusi Pemuda - 20:00"],
-  "Sabtu": ["Kegiatan Lomba - 09:00", "Senam Pagi - 06:00"],
-  "Minggu": ["Pengajian Umum - 10:00"]
+  "Senin": [
+    { waktu: "19:00", kegiatan: "Akan Segera Tesedia" },
+    { waktu: "20:00", kegiatan: "Akan Segera Tesedia" }
+  ],
+  "Selasa": [
+    { waktu: "18:30", kegiatan: "Akan Segera Tesedia" }
+  ],
+  "Rabu": [
+    { waktu: "07:00", kegiatan: "Akan Segera Tesedia" },
+    { waktu: "20:00", kegiatan: "Akan Segera Tesedia" }
+  ],
+  "Kamis": [
+    { waktu: "07:00", kegiatan: "Akan Segera Tesedia"}
+  ],
+  "Jumat": [
+    { waktu: "20:00", kegiatan: "Akan Segera Tesedia"}
+  ],
+  "Sabtu": [
+    { waktu: "06:00", kegiatan: "Akan Segera Tesedia"},
+    { waktu: "09:00", kegiatan: "Akan Segera Tesedia"}
+  ],
+  "Minggu": [
+    { waktu: "10:00", kegiatan: "Akan Segera Tesedia"}
+  ]
 };
 
 function tampilkanJadwalHariIni() {
@@ -70,12 +87,17 @@ function tampilkanJadwalHariIni() {
   list.innerHTML = "";
 
   const jadwal = jadwalKegiatan[hari] || [];
+
   if (jadwal.length === 0) {
-    list.innerHTML = "<li>Tidak ada kegiatan hari ini.</li>";
+    const li = document.createElement('li');
+    li.textContent = "Tidak ada kegiatan hari ini.";
+    li.style.opacity = 1;
+    list.appendChild(li);
   } else {
-    jadwal.forEach(item => {
+    jadwal.forEach((item, index) => {
       const li = document.createElement('li');
-      li.textContent = item;
+      li.textContent = `${item.kegiatan} - ${item.waktu}`;
+      li.style.animationDelay = `${index * 0.2}s`;
       list.appendChild(li);
     });
   }
