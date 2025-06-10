@@ -56,28 +56,28 @@ if (dataPemasukan && dataPengeluaran) {
 }
 const jadwalKegiatan = {
   "Senin": [
-    { waktu: "19:00", kegiatan: "Akan Segera Tesedia" },
-    { waktu: "20:00", kegiatan: "Akan Segera Tesedia" }
+    { waktu: "19:00", kegiatan: "Akan Segera Tersedia" },
+    { waktu: "20:00", kegiatan: "Akan Segera Tersedia" }
   ],
   "Selasa": [
-    { waktu: "18:30", kegiatan: "Akan Segera Tesedia" }
+    { waktu: "18:30", kegiatan: "Akan Segera Tersedia" }
   ],
   "Rabu": [
-    { waktu: "07:00", kegiatan: "Akan Segera Tesedia" },
-    { waktu: "20:00", kegiatan: "Akan Segera Tesedia" }
+    { waktu: "07:00", kegiatan: "Akan Segera Tersedia" },
+    { waktu: "20:00", kegiatan: "Akan Segera Tersedia" }
   ],
   "Kamis": [
-    { waktu: "07:00", kegiatan: "Akan Segera Tesedia"}
+    { waktu: "07:00", kegiatan: "Akan Segera Tersedia"}
   ],
   "Jumat": [
-    { waktu: "20:00", kegiatan: "Akan Segera Tesedia"}
+    { waktu: "20:00", kegiatan: "Akan Segera Tersedia"}
   ],
   "Sabtu": [
-    { waktu: "06:00", kegiatan: "Akan Segera Tesedia"},
-    { waktu: "09:00", kegiatan: "Akan Segera Tesedia"}
+    { waktu: "06:00", kegiatan: "Akan Segera Tersedia"},
+    { waktu: "09:00", kegiatan: "Akan Segera Tersedia"}
   ],
   "Minggu": [
-    { waktu: "10:00", kegiatan: "Akan Segera Tesedia"}
+    { waktu: "10:00", kegiatan: "Akan Segera Tersedia"}
   ]
 };
 
