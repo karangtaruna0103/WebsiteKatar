@@ -18,11 +18,29 @@
       <a href="login.html">LOGIN</a>
     </nav>
   </header>
+<!-- Tombol Chat -->
+<div class="chat-button" onclick="toggleChat()">💬</div>
+
+<!-- Pop-up Chat -->
+<div class="chat-popup" id="chatPopup">
+  <div class="chat-header">
+    <span>Chat Karang Taruna</span>
+    <button onclick="toggleChat()">✖</button>
+  </div>
+  <div class="chat-body">
+    <label>Nama:</label>
+    <input type="text" id="chatName" placeholder="Nama Anda">
+    <label>Pesan:</label>
+    <textarea id="chatMessage" placeholder="Tulis pesan..."></textarea>
+    <button onclick="kirimChat()">Kirim</button>
+  </div>
+</div>
 
   <main>
     <h2>Selamat Datang</h2>
-    <p>Mohon Maaf Website Ini Sedang Di Kembangkan & Insya Allah Selesai Tahun 2026</p>
+    <p>Mohon Sabar Ya Karena Proyek Website Ini Sedang Di Kembangkan</p>
   </main>
+</div>
 
   <footer>
     <p>&copy; 2025 Karang Taruna Kebon Jeruk</p>
@@ -38,6 +56,24 @@
       notif.style.display = 'none';
     }, 4000); // sembunyikan setelah 4 detik
   };
+
+  function toggleChat() {
+    const chat = document.getElementById("chatPopup");
+    chat.style.display = (chat.style.display === "block") ? "none" : "block";
+  }
+
+  function kirimChat() {
+    const nama = document.getElementById("chatName").value;
+    const pesan = document.getElementById("chatMessage").value;
+    if (!nama || !pesan) {
+      alert("Mohon isi nama dan pesan.");
+      return;
+    }
+    alert(`Terima kasih ${nama}, pesan Anda telah dikirim!\n"${pesan}"`);
+    document.getElementById("chatName").value = "";
+    document.getElementById("chatMessage").value = "";
+    toggleChat();
+  }
 </script>
 </body>
 </html>
