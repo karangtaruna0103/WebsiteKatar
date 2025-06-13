@@ -54,30 +54,32 @@ if (dataPemasukan && dataPengeluaran) {
     dataPengeluaran.appendChild(li);
   });
 }
+
+//Jadwal Kegiatan
 const jadwalKegiatan = {
   "Senin": [
-    { waktu: "19:00", kegiatan: "Akan Segera Tersedia" },
-    { waktu: "20:00", kegiatan: "Akan Segera Tersedia" }
+    { waktu: "19:00", kegiatan: "Akan Segera Tesedia" },
+    { waktu: "20:00", kegiatan: "Akan Segera Tesedia" }
   ],
   "Selasa": [
-    { waktu: "18:30", kegiatan: "Akan Segera Tersedia" }
+    { waktu: "18:30", kegiatan: "Akan Segera Tesedia" }
   ],
   "Rabu": [
-    { waktu: "07:00", kegiatan: "Akan Segera Tersedia" },
-    { waktu: "20:00", kegiatan: "Akan Segera Tersedia" }
+    { waktu: "07:00", kegiatan: "Akan Segera Tesedia" },
+    { waktu: "20:00", kegiatan: "Akan Segera Tesedia" }
   ],
   "Kamis": [
-    { waktu: "07:00", kegiatan: "Akan Segera Tersedia"}
+    { waktu: "07:00", kegiatan: "Akan Segera Tesedia"}
   ],
   "Jumat": [
-    { waktu: "20:00", kegiatan: "Akan Segera Tersedia"}
+    { waktu: "20:00", kegiatan: "Akan Segera Tesedia"}
   ],
   "Sabtu": [
-    { waktu: "06:00", kegiatan: "Akan Segera Tersedia"},
-    { waktu: "09:00", kegiatan: "Akan Segera Tersedia"}
+    { waktu: "06:00", kegiatan: "Akan Segera Tesedia"},
+    { waktu: "09:00", kegiatan: "Akan Segera Tesedia"}
   ],
   "Minggu": [
-    { waktu: "10:00", kegiatan: "Akan Segera Tersedia"}
+    { waktu: "10:00", kegiatan: "Akan Segera Tesedia"}
   ]
 };
 

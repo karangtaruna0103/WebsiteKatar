@@ -109,6 +109,8 @@ main h2 {
     padding: 8px;
   }
 }
+
+/* Chat Button Katar */
 .chat-button {
   position: fixed;
   bottom: 20px;
@@ -171,6 +173,8 @@ main h2 {
   border-radius: 5px;
   cursor: pointer;
 }
+
+/* Jadwal Kegiatan */
 .jadwal-section {
   max-width: 700px;
   margin: 30px auto;
@@ -217,6 +221,7 @@ main h2 {
   to {opacity: 1;}
 }
 
+/* Karang Taruna Footer */
 .main-footer {
   background-color: #1e3a8a;
   color: white;
@@ -308,4 +313,81 @@ main h2 {
 @keyframes slowspin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* Sejarah Karang Taruna CSS */
+.sejarah-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f3f4f6;
+  border-left: 5px solid #2563eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.sejarah-section h2 {
+  color: #1e40af;
+  margin-bottom: 10px;
+}
+
+.sejarah-section p {
+  line-height: 1.6;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+/* Struktur Organisasi CSS */
+.struktur-page {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9fafb;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.struktur-page h2 {
+  color: #1e40af;
+  margin-bottom: 15px;
+}
+
+.struktur-organisasi ul {
+  list-style: none;
+  padding: 0;
+}
+
+.struktur-organisasi li {
+  background: white;
+  margin-bottom: 10px;
+  padding: 12px 16px;
+  border-left: 4px solid #2563eb;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  color: #374151;
+}
+
+.informasi-page {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.info-card {
+  background: #ffffff;
+  border-left: 5px solid #2563eb;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.info-card h2 {
+  margin-bottom: 8px;
+  color: #1e40af;
+}
+
+.info-card p {
+  margin: 5px 0;
+  color: #374151;
 }
