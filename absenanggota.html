@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Absen Anggota Karang Taruna</title>
+
+  <!-- jsPDF & autoTable -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #1e3a8a;
+      margin-bottom: 20px;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 15px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover { background: #1e40af; }
+
+    .btn-danger {
+      background: #ef4444;
+    }
+    .btn-warning {
+      background: #f59e0b;
+      color: white;
+    }
+    .btn-small {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      border-radius: 4px;
+    }
+    .action-buttons {
+      text-align: center;
+      margin: 20px auto;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background: #2563eb;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f9fafb;
+    }
+
+    #notifikasi {
+      display: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #16a34a;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      font-weight: bold;
+      z-index: 999;
+      transition: opacity 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Absensi Anggota Karang Taruna</h2>
+
+<form id="absenForm">
+  <input type="text" id="nama" placeholder="Nama Anggota" required />
+  <select id="status">
+    <option value="Hadir">Hadir</option>
+    <option value="Izin">Izin</option>
+    <option value="Alpha">Alpha</option>
+  </select>
+  <button type="submit">Simpan Absen</button>
+</form>
+
+<div class="action-buttons">
+  <button class="btn-small btn-danger" onclick="hapusSemua()">🗑️ Hapus Semua</button>
+  <button class="btn-small" onclick="cetakPDF()">📄 Cetak PDF</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Nama</th>
+      <th>Status</th>
+      <th>Tanggal</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody id="tabelAbsen"></tbody>
+</table>
+
+<!-- Notifikasi -->
+<div id="notifikasi">✅ Absen berhasil disimpan!</div>
+
+<script>
+  const form = document.getElementById('absenForm');
+  const tabelBody = document.getElementById('tabelAbsen');
+
+  function tampilkanData() {
+    const data = JSON.parse(localStorage.getItem('absensiKarangTaruna')) || [];
+    tabelBody.innerHTML = '';
+    data.forEach((item, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${item.nama}</td>
+        <td>${item.status}</td>
+        <td>${item.tanggal}</td>
+        <td>
+          <button class="btn-small btn-warning" onclick="editData(${index})">Edit</button>
+        </td>
+      `;
+      tabelBody.appendChild(row);
+    });
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nama = document.getElementById('nama').value;
+    const status = document.getElementById('status').value;
+    const tanggal = new Date().toLocaleDateString('id-ID');
+
+    const data = JSON.parse(localStorage.getItem('absensiKarangTaruna')) || [];
+    data.push({ nama, status, tanggal });
+    localStorage.setItem('absensiKarangTaruna', JSON.stringify(data));
+
+    form.reset();
+    tampilkanData();
+    tampilkanNotifikasi();
+  });
+
+  function editData(index) {
+    const data = JSON.parse(localStorage.getItem('absensiKarangTaruna')) || [];
+    const namaBaru = prompt("Edit Nama:", data[index].nama);
+    const statusBaru = prompt("Edit Status (Hadir/Izin/Alpha):", data[index].status);
+    if (namaBaru && statusBaru) {
+      data[index].nama = namaBaru;
+      data[index].status = statusBaru;
+      localStorage.setItem('absensiKarangTaruna', JSON.stringify(data));
+      tampilkanData();
+    }
+  }
+
+  function hapusSemua() {
+    if (confirm("Yakin ingin menghapus semua absen?")) {
+      localStorage.removeItem('absensiKarangTaruna');
+      tampilkanData();
+    }
+  }
+
+  function tampilkanNotifikasi() {
+    const notif = document.getElementById('notifikasi');
+    notif.style.display = 'block';
+    notif.style.opacity = '1';
+    setTimeout(() => {
+      notif.style.opacity = '0';
+      setTimeout(() => notif.style.display = 'none', 500);
+    }, 2000);
+  }
+
+  function cetakPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const data = JSON.parse(localStorage.getItem('absensiKarangTaruna')) || [];
+
+    if (data.length === 0) {
+      alert("Tidak ada data untuk dicetak.");
+      return;
+    }
+
+    const rows = data.map((item, i) => [
+      i + 1, item.nama, item.status, item.tanggal
+    ]);
+
+    doc.setFontSize(14);
+    doc.text("Laporan Absen Karang Taruna", 14, 20);
+    doc.autoTable({
+      startY: 30,
+      head: [["No", "Nama", "Status", "Tanggal"]],
+      body: rows
+    });
+
+    doc.save("absen_karang_taruna.pdf");
+  }
+
+  tampilkanData();
+</script>
+
+</body>
+</html>

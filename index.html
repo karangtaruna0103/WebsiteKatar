@@ -40,11 +40,11 @@
     <button onclick="toggleChat()">✖</button>
   </div>
   <div class="chat-body">
-    <label>Nama:</label>
-    <input type="text" id="chatName" placeholder="Nama Anda">
-    <label>Pesan:</label>
-    <textarea id="chatMessage" placeholder="Tulis pesan..."></textarea>
-    <button onclick="kirimChat()">Kirim</button>
+   <form action="kirim-chat.php" method="POST">
+  <input type="text" name="nama" placeholder="Nama Anda" required>
+  <textarea name="pesan" placeholder="Pesan Anda" required></textarea>
+  <button type="submit">Kirim</button>
+</form>
   </div>
 </div>
 
