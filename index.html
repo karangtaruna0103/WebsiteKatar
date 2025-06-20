@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#2563eb" />
+
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="UTF-8">
   <title>Karang Taruna Kebon Jeruk</title>
@@ -80,6 +83,14 @@
     toggleChat();
   }
 </script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(() => console.log("✅ Service Worker terdaftar"))
+      .catch((err) => console.error("❌ SW error:", err));
+  }
+</script>
+
 </body>
 <section class="sejarah-section">
   <h2>Sejarah Karang Taruna</h2>

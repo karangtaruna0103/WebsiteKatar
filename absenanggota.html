@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Absen Anggota Karang Taruna</title>
+  <title>Absensi Anggota Karang Taruna</title>
 
-  <!-- jsPDF & autoTable -->
+  <!-- jsPDF + AutoTable -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 
@@ -15,19 +15,37 @@
       background: #f1f5f9;
       padding: 20px;
     }
+
     h2 {
       text-align: center;
       color: #1e3a8a;
       margin-bottom: 20px;
     }
+
+    .btn {
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+      margin: 5px;
+    }
+
+    .btn-primary { background: #2563eb; }
+    .btn-danger  { background: #ef4444; }
+    .btn-warning { background: #f59e0b; }
+    .btn-back    { background: #6b7280; }
+
     form {
       background: white;
       padding: 20px;
       max-width: 400px;
-      margin: 0 auto;
+      margin: 0 auto 20px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
+
     input, select {
       width: 100%;
       padding: 10px;
@@ -35,49 +53,30 @@
       border-radius: 6px;
       border: 1px solid #ccc;
     }
-    button {
-      padding: 10px 15px;
-      background: #2563eb;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover { background: #1e40af; }
 
-    .btn-danger {
-      background: #ef4444;
-    }
-    .btn-warning {
-      background: #f59e0b;
-      color: white;
-    }
-    .btn-small {
-      padding: 6px 12px;
-      font-size: 0.9rem;
-      border-radius: 4px;
-    }
-    .action-buttons {
+    .button-group {
       text-align: center;
-      margin: 20px auto;
+      margin-bottom: 20px;
     }
 
     table {
       width: 100%;
-      margin-top: 20px;
       border-collapse: collapse;
       background: white;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
+
     th, td {
       padding: 10px;
       border: 1px solid #ddd;
       text-align: center;
     }
+
     th {
       background: #2563eb;
       color: white;
     }
+
     tr:nth-child(even) {
       background-color: #f9fafb;
     }
@@ -91,10 +90,14 @@
       color: white;
       padding: 12px 20px;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
       font-weight: bold;
       z-index: 999;
       transition: opacity 0.5s ease;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
     }
   </style>
 </head>
@@ -109,12 +112,12 @@
     <option value="Izin">Izin</option>
     <option value="Alpha">Alpha</option>
   </select>
-  <button type="submit">Simpan Absen</button>
+  <button type="submit" class="btn btn-primary">Simpan Absen</button>
 </form>
 
-<div class="action-buttons">
-  <button class="btn-small btn-danger" onclick="hapusSemua()">🗑️ Hapus Semua</button>
-  <button class="btn-small" onclick="cetakPDF()">📄 Cetak PDF</button>
+<div class="button-group">
+  <button class="btn btn-danger" onclick="hapusSemua()">🗑️ Hapus Semua</button>
+  <button class="btn btn-primary" onclick="cetakPDF()">📄 Cetak PDF</button>
 </div>
 
 <table>
@@ -133,6 +136,11 @@
 <!-- Notifikasi -->
 <div id="notifikasi">✅ Absen berhasil disimpan!</div>
 
+<!-- Tombol Kembali di Bawah -->
+<footer>
+  <button class="btn btn-back" onclick="window.history.back()">⬅️ Kembali</button>
+</footer>
+
 <script>
   const form = document.getElementById('absenForm');
   const tabelBody = document.getElementById('tabelAbsen');
@@ -148,7 +156,7 @@
         <td>${item.status}</td>
         <td>${item.tanggal}</td>
         <td>
-          <button class="btn-small btn-warning" onclick="editData(${index})">Edit</button>
+          <button class="btn btn-warning btn-small" onclick="editData(${index})">Edit</button>
         </td>
       `;
       tabelBody.appendChild(row);
@@ -221,7 +229,7 @@
       body: rows
     });
 
-    doc.save("absen_karang_taruna.pdf");
+    doc.save("absen_anggota.pdf");
   }
 
   tampilkanData();
